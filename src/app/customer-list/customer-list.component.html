@@ -1,0 +1,95 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div>
+  <h3>
+    Customer List
+  </h3>
+</div>
+<div class="navbar-form centered">
+  <div class="input-group dropdown">
+    <select class="form-control " [(ngModel)]="searchValue">
+      <option value="" selected>Select Filter Column</option>
+      <option value="Id">Id</option>
+      <option value="CompanyName">CompanyName</option>
+      <option value="ContactName">ContactName</option>
+      <option value="ContactTitle">ContactTitle</option>
+      <option value="Address">Address</option>
+      <option value="City">City</option>
+      <option value="PostalCode">PostalCode</option>
+      <option value="Country">Country</option>
+      <option value="Phone">Phone</option>
+      <option value="Fax">Fax</option>
+    </select>
+  </div>
+  <div class="input-group">
+
+    <input type="text" [(ngModel)]="searchText" class="form-control" (keyup)="search()" id="txtSearch" autocomplete="off" placeholder="Search text">
+    <div class="input-group-btn">
+      <button class="btn btn-default" (click)="search()" type="button">
+        <i class="glyphicon glyphicon-search"></i>
+      </button>
+    </div>
+  </div>
+</div>
+<div class="col-md-12">
+
+  <div>
+      <nav aria-label="Page navigation example">
+          <ul class="pagination col-md-2">
+            <li class="page-item ">
+              <a [class.disabled]="initialIndex == 1" class="page-link" (click)="previousPage()">Previous Page</a>
+            </li>
+
+            <li class="page-item">
+              <a [class.disabled]="finalIndex == totalCustomers" class="page-link" (click)="nextPage()">Next Page</a>
+            </li>
+
+          </ul>
+
+        </nav>
+        <label class="headerInfo" *ngIf="totalCustomers>0">Displaying {{initialIndex}} - {{finalIndex}} out of {{totalCustomers}}
+          </label>
+
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th (click)="sort('Id')">Id</th>
+          <th (click)="sort('CompanyName')">Company Name</th>
+          <th (click)="sort('ContactName')">Contact Name</th>
+          <th (click)="sort('ContactTitle')">Contact Title</th>
+          <th (click)="sort('Address')">Address</th>
+          <th (click)="sort('City')">City</th>
+          <th (click)="sort('PostalCode')">Postal Code</th>
+          <th (click)="sort('Country')">Country</th>
+          <th (click)="sort('Phone')">Phone</th>
+          <th (click)="sort('Fax')">Fax</th>
+          <th> Actions </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of actualList">
+          <td>
+            <a [routerLink]="['/customer', item.Id]">{{item.Id}}</a>
+          </td>
+          <td>{{item.CompanyName}}</td>
+          <td>{{item.ContactName}}</td>
+          <td>{{item.ContactTitle}}</td>
+          <td>{{item.Address}}</td>
+          <td>{{item.City}}</td>
+          <td>{{item.PostalCode}}</td>
+          <td>{{item.Country}}</td>
+          <td>{{item.Phone}}</td>
+          <td>{{item.Fax}}</td>
+          <td>
+            <button class="btn btn-default" type="button" title="View Customer">
+              <a [routerLink]="['/customer', item.Id]">
+                <i class="glyphicon glyphicon-eye-open"></i>
+              </a>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <br />
+
+  </div>
+</div>

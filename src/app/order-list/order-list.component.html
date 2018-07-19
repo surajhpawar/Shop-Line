@@ -1,0 +1,95 @@
+<!--The content below is only a placeholder and can be replaced.Order.-->
+<div>
+  <h3>
+    Order List
+  </h3>
+</div>
+<div class="navbar-form centered">
+  <div class="input-group dropdown centered">
+    <select class="form-control " [(ngModel)]="searchValue">
+      <option value="" selected>Select Filter Column</option>
+      <option value="Id">Id</option>
+      <option value="CustomerId">CustomerId</option>
+      <option value="EmployeeId">EmployeeId</option>
+      <option value="OrderDate">OrderDate</option>
+      <option value="RequiredDate">RequiredDate</option>
+      <option value="Freight">Freight</option>
+      <option value="ShipName">ShipName</option>
+      <option value="ShipAddress">ShipAddress</option>
+      <option value="ShipCity">ShipCity</option>
+      <option value="ShipPostalCode">ShipPostalCode</option>
+      <option value="ShipCountry">ShipCountry</option>
+    </select>
+  </div>
+  <div class="input-group centered">
+    <input type="text" [(ngModel)]="searchText" class="form-control" (keyup)="search()" id="txtSearch" autocomplete="off" placeholder="Search text">
+    <div class="input-group-btn">
+      <button class="btn btn-default" (click)="search()" type="button">
+        <i class="glyphicon glyphicon-search"></i>
+      </button>
+    </div>
+  </div>
+</div>
+<div class="col-md-12">
+  <div>
+    <nav aria-label="Page navigation example">
+      <ul class="pagination col-md-2">
+        <li class="page-item ">
+          <a [class.disabled]="initialIndex == 1" class="page-link" (click)="previousPage()">Previous Page</a>
+        </li>
+
+        <li class="page-item">
+          <a [class.disabled]="finalIndex == totalOrders" class="page-link" (click)="nextPage()">Next Page</a>
+        </li>
+
+      </ul>
+
+    </nav>
+    <label class="headerInfo" *ngIf="totalOrders>0">Displaying {{initialIndex}} - {{finalIndex}} out of {{totalOrders}}
+      </label>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th (click)="sort('Id')">Id</th>
+          <th (click)="sort('CustomerId')">Customer Id</th>
+          <th (click)="sort('EmployeeId')">Employee Id</th>
+          <th (click)="sort('OrderDate')">Order Date</th>
+          <th (click)="sort('RequiredDate')">Required Date</th>
+          <th (click)="sort('Freight')">Freight</th>
+          <th (click)="sort('ShipName')">Ship Name</th>
+          <th (click)="sort('ShipAddress')">Ship Address</th>
+          <th (click)="sort('ShipCity')">Ship City</th>
+          <th (click)="sort('ShipPostalCode')">Ship Postal Code</th>
+          <th (click)="sort('ShipCountry')">Ship Country</th>
+          <th> Actions </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of orderList">
+          <td>
+            <a [routerLink]="['/order', item.Id]">{{item.Id}}</a>
+          </td>
+          <td>{{item.CustomerId}}</td>
+          <td>{{item.EmployeeId}}</td>
+          <td>{{item.OrderDate | date:'medium'}}</td>
+          <td>{{item.RequiredDate | date:'medium'}}</td>
+          <td>{{item.Freight}}</td>
+          <td>{{item.ShipName}}</td>
+          <td>{{item.ShipAddress}}</td>
+          <td>{{item.ShipCity}}</td>
+          <td>{{item.ShipPostalCode}}</td>
+          <td>{{item.ShipCountry}}</td>
+
+          <td>
+            <button class="btn btn-default" type="button" title="View Order">
+              <a [routerLink]="['/order', item.Id]">
+                <i class="glyphicon glyphicon-eye-open"></i>
+              </a>
+            </button>
+          </td>
+      </tbody>
+    </table>
+    <br />
+
+  </div>
+</div>

@@ -1,0 +1,83 @@
+<div class="col-md-12">
+
+  <div>
+     <h3> Customer Info </h3>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Company Name</th>
+          <th>Contact Name</th>
+          <th>Contact Title</th>
+          <th>Address</th>
+          <th>City</th>
+          <th>Postal Code</th>
+          <th>Country</th>
+          <th>Phone</th>
+          <th>Fax</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of actualList">
+          <td>
+            {{item.Id}}
+          </td>
+          <td>{{item.CompanyName}}</td>
+          <td>{{item.ContactName}}</td>
+          <td>{{item.ContactTitle}}</td>
+          <td>{{item.Address}}</td>
+          <td>{{item.City}}</td>
+          <td>{{item.PostalCode}}</td>
+          <td>{{item.Country}}</td>
+          <td>{{item.Phone}}</td>
+          <td>{{item.Fax}}</td>
+        </tr>
+      </tbody>
+    </table>
+    <br />
+
+  <h3>Customer's Orders</h3>
+    <table class="table table-striped">
+        <thead>
+          <tr>
+            <th (click)="sort('Id')">Id</th>
+            <th (click)="sort('CustomerId')">Customer Id</th>
+            <th (click)="sort('EmployeeId')">Employee Id</th>
+            <th (click)="sort('OrderDate')">Order Date</th>
+            <th (click)="sort('RequiredDate')">Required Date</th>
+            <th (click)="sort('Freight')">Freight</th>
+            <th (click)="sort('ShipName')">Ship Name</th>
+            <th (click)="sort('ShipAddress')">Ship Address</th>
+            <th (click)="sort('ShipCity')">Ship City</th>
+            <th (click)="sort('ShipPostalCode')">Ship Postal Code</th>
+            <th (click)="sort('ShipCountry')">Ship Country</th>
+            <th> Actions </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of orderList">
+            <td>
+              <a [routerLink]="['/order', item.Id]">{{item.Id}}</a>
+            </td>
+            <td>{{item.CustomerId}}</td>
+            <td>{{item.EmployeeId}}</td>
+            <td>{{item.OrderDate | date:'medium'}}</td>
+            <td>{{item.RequiredDate | date:'medium'}}</td>
+            <td>{{item.Freight}}</td>
+            <td>{{item.ShipName}}</td>
+            <td>{{item.ShipAddress}}</td>
+            <td>{{item.ShipCity}}</td>
+            <td>{{item.ShipPostalCode}}</td>
+            <td>{{item.ShipCountry}}</td>
+            <td>
+                <button class="btn btn-default" type="button" title="View Order">
+                    <a [routerLink]="['/order', item.Id]">
+                      <i class="glyphicon glyphicon-eye-open"></i>
+                    </a>
+                  </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+  </div>
+  <router-outlet></router-outlet>

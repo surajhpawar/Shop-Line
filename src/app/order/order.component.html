@@ -1,0 +1,39 @@
+<div class=" col-md-12">
+    <h3>Order</h3>
+    <div class="centered">
+
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Customer Id</th>
+            <th>Employee Id</th>
+            <th>Order Date</th>
+            <th>Required Date</th>
+            <th>Freight</th>
+            <th>Ship Name</th>
+            <th>Ship Address</th>
+            <th>Ship City</th>
+            <th>Ship Postal Code</th>
+            <th>Ship Country</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of orderList">
+            <td>{{item.Id}}
+            <td>{{item.CustomerId}}</td>
+            <td>{{item.EmployeeId}}</td>
+            <td>{{item.OrderDate | date:'medium'}}</td>
+            <td>{{item.RequiredDate | date:'medium'}}</td>
+            <td>{{item.Freight}}</td>
+            <td>{{item.ShipName}}</td>
+            <td>{{item.ShipAddress}}</td>
+            <td>{{item.ShipCity}}</td>
+            <td>{{item.ShipPostalCode}}</td>
+            <td>{{item.ShipCountry}}</td>
+        </tbody>
+      </table>
+      <br />
+    </div>
+  </div>
+<router-outlet></router-outlet>

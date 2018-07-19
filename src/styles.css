@@ -1,1 +1,62 @@
 /* You can add global styles to this file, and also import other style files */
+.centered {
+  text-align: center;
+  align-content: center;
+}
+
+ul {
+  list-style-type: none;
+}
+.container-fluid {
+  background-color: #8c0f90;
+}
+
+.navbar-brand, .navbar-nav > li{
+  border-right: 1px solid white;
+}
+.navbar-brand {
+  color: white !important;
+    background-color: maroon !important;
+    box-shadow: 3px 3px #540e4c !important;
+}
+th {
+  text-align: center !important;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+thead{
+  border: 1px solid black;
+}
+
+.dropdown{
+  margin-right: 10px;
+}
+
+table {
+border: 1px solid black;
+}
+
+a.disabled {
+  pointer-events: none;
+  cursor: default;
+  background-color: lightgray !important;
+}
+
+.headerInfo{
+  margin-top: 2%;
+  padding: 0px;
+}
+body{
+  margin: 5px;
+}
+
+.home{
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+
+h3,th{
+  color:darkred;
+}

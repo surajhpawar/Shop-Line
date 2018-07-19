@@ -1,4 +1,8 @@
 import { Component } from '@angular/core';
+import  { CustomerService } from './services/customer.service';
+import  { OrderService } from './services/order.service'
+import { Customer } from './models/customer.model';
+import { Order } from './models/order.model';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +11,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+  constructor(){
+
+  }
 }
